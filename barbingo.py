@@ -1,91 +1,145 @@
 import random
 
+repeated_actions = [
+    "Deciros el nombre y un dato random sobre vosotros",
+    "Comentad vuestra red flag, beige flag y green flag",
+    "Elegid por votación el disfraz más currado/chulo (dentro y fuera del equipo) y apuntadlo en un papel",
+    "Cread un disfraz nuevo con lo que encontréis (foto)",
+    "Cread una poción en un vaso(vuestra bebida)  y elegid; 1.Uno del equipo la bebe entera. 2.Todos bebéis un poco",
+    "Discutid sobre que monstruo serías cada uno y apuntadlo en un papel",
+    "Foto con alguien vestido como la mascota de vuestro equipo",
+    "Cread un disfraz nuevo con lo que encontréis (foto)",
+    "Grabad como asustáis a alguien de otro equipo",
+]
+
+northern_bars = [
+    "Bar Taberna los claveles",
+    "Tiki Volcano Bar",
+    "Café de Ruiz",
+    "Barroco el bar de Uadibloc",
+    "Aleatorio Bar",
+]
+southern_bars = [
+    "SAMBHAD the cocktail bar",
+    "Bar Menuda History",
+    "El Rincón de La Habana",
+    "Loreto Coffee Bar",
+    "Santamaría Coctelería",
+    "Pub Prada",
+    "La Prensa Burgers & Beers",
+]
+
 bars = [
-    "Hotel California",
-    "La Manuela",
-    "Ocean Rock Bar",
-    "Poca Verguenza",
-    # "Red Bar",
-    # "Dekada",
-    # "Cervecería El Metro de Manuela Malasaña",
-    "María Puñales",
-    "Madrid Me Mata",
-    "El Penta",
-    "Tupper Ware",
-    "Estar Café",
-    "Wall St",
+    "Bar Antonio",
+    "La Pasa Gin Bar",
+    "Ca Angelita - Bar Conde Duque",
+    "El Amor Hermoso Bar",
+    "Bravo Wine Bar",
+    "La Doña",
+    "Marrufo Coctelería",
+    "J&J's Books and Coffee",
+    "Los más Canallas de Malasaña",
+    "El Pez Gato",
+    "1862 Dry Bar",
+    "Sidrería La Cuenca",
+    "Chin Chin",
+    "Medium Club",
+    "Picnic",
+    "Esoterica Speakeasy",
+    "Rockade Malasaña",
+    "Estación Malasaña",
+    "Malasaña Sports Pub",
+    "Casa Julio",
+    "Maniquí Bar",
+    "Lolita Vintage Café",
+    "Infernales Café Bar",
+    "Coco Bar - Pastrami",
+    "Casa Macareno",
     "Freeway",
-    "Super pop bar",
-    "Mongo bar",
+    "Casa Camacho",
+    "The Toast Taproom",
+    "El Rincón",
+    "Estar Café",
+    "Hotel California",
+    "Rebelde Malasaña",
+    "Maria Puñales",
+    "Calandría Bar",
+    "Cervecería El Metro de Manuela Malasaña",
+    "Café Pepe Botella",
+    "El 2D",
 ]
 
-teams = ["un fantasma", "una bruja", "un diablillo", "una payasa"]
-
-single_actions = [
-    "CHUPITO!",
-    "COPAZO!",
-    "Grita Hola Malasaña!",
-    "Selfie con la people",
-    "Foto del panorama",
-    "Consigue el instagram de alguien",
-    "Consigue un autógrafo",
-    "Baila la Macarena",
-    "Canta el cumpleaños feliz",
-    "Haz el Siu como Ronaldo",
-    "Imita a Rajoy",
-    "Di un Trabalenguas 3 veces seguidas",
-    "Haz el Michael Jackson",
-    "Baila como Trump",
-    "Quitate un zapato",
-    "Canta la cancion de apertura de una serie",
-    "Selfie con morritos",
-    "Habla todo el rato con acento argentino",
-    "Habla todo el rato en inglés",
-    "Hidalgo de tu cerve/tinto",
-    "Conviertete en una pija o una choni",
-    "Hazte pasar por un famoso",
-    "Solo puedes decir que si",
-    "Pide un aperitivo y compartelo",
+tiktoks = [
+    "chasquidos familia adams",
+    "trend the sugar on my tongue ",
+    "trend Ramalama (bang bang)",
+    "trend no responde pero siempre tira un liky",
+    "trend where the hell is my  husband",
+    "frases rajoy",
+    "trend if you want it, take it, I should’ve said it before",
 ]
 
-group_actions = [
-    "Presentate a",
-    "Preguntale que rasgo tienen de su signo a",
-    "Cuentale un chiste a",
-    "Preguntale sobre su último viaje a",
-    "Que te cuente un chiste de humor negro",
-    "Preguntale cual es su sueño a",
-    "Preguntale tu anécdota más vergonzosa a",
-    "Preguntale cual es su imperio romano a",
-    "Enseñale tu meme favorito a",
-    "Cuentale un secreto a",
-    "Explica quien es tu celebrity crush a",
-    "Explica porque Miley o Selena es mejor a",
-    "Debate sobre la mejor pelí de animación con",
+
+easy_search = [
+    "hombre lobo",
+    "zombie",
+    "demonio",
+    "fantasma",
+    "pirata",
+    "monja",
+]
+
+hard_search = [
+    "Miércoles Addams",
+    "El Joker",
+    "Cruella de Vil",
+    "Harley Quinn",
+    "Maléfica",
+    "Jason Viernes 13",
+    "Chuky",
+    "Freddy Krueger",
 ]
 
 with open("output.txt", "w", encoding="utf-8") as f:
-    for bar in range(1, len(bars) + 1):
-        for action in single_actions:
-            f.write(f"Bar #{bar} - {action}\n")
+    for team in range(5):
+        f.write("---- BARBINGO EQUIPO " + str(team + 1) + " ----\n")
+        # bar 1
+        chosenBarId = random.randrange(len(bars))
+        chosen_bar = bars.pop(chosenBarId)
+        f.write("Ronda en " + chosen_bar + "\n")
 
-        for group_action in range(1, len(group_actions) + 1):
-            team1 = random.choice(teams)
-            f.write(f"Bar #{bar} - Interacción Social #{group_action} con un {team1}\n")
+        # bar 2
+        chosenBarId = random.randrange(len(bars))
+        chosen_bar = bars.pop(chosenBarId)
+        f.write("Ronda de chupitos en " + chosen_bar + "\n")
 
-            teams_left = teams_left = [t for t in teams if t != team1]
-            team2 = random.choice(teams_left)
-            f.write(f"Bar #{bar} - Interacción Social #{group_action} con un {team2}\n")
+        # bar 3
+        chosenBarId = random.randrange(len(northern_bars))
+        chosen_bar = northern_bars.pop(chosenBarId)
+        f.write("Ronda en " + chosen_bar + "\n")
 
+        # bar 4
+        chosenBarId = random.randrange(len(southern_bars))
+        chosen_bar = southern_bars.pop(chosenBarId)
+        f.write("Ronda en " + chosen_bar + "\n")
 
-for bar in bars:
-    bar_num = bars.index(bar) + 1
-    if bar_num < 10:
-        bar_num = f"0{bar_num}"
-    print(f"#{bar_num}:".ljust(4), bar)
-print()
-for interaccion in group_actions:
-    num = group_actions.index(interaccion) + 1
-    if num < 10:
-        num = f"0{num}"
-    print(f"#{num}:".ljust(4), interaccion, "X")
+        # print actions
+        for action in repeated_actions:
+            f.write(action + "\n")
+
+        # tiktok
+        chosenTiktokId = random.randrange(len(tiktoks))
+        chosen_tiktok = tiktoks.pop(chosenTiktokId)
+        f.write("Haced un tiktok con: " + chosen_tiktok + "\n")
+
+        # search easy
+        chosenSearchId = random.randrange(len(easy_search))
+        chosen_search = easy_search.pop(chosenSearchId)
+        f.write("Encontrar y haceros una foto con un" + chosen_search + "\n")
+
+        # search hard
+        chosenSearchId = random.randrange(len(hard_search))
+        chosen_search = hard_search.pop(chosenSearchId)
+        f.write("Encontrar y haceros una foto con " + chosen_search + "\n")
+
+        f.write("\n")
