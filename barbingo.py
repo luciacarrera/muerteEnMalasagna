@@ -1,5 +1,7 @@
 import random
 
+## edit actions for your customized bingo
+
 repeated_actions = [
     "Deciros el nombre y un dato random sobre vosotros",
     "Comentad vuestra red flag, beige flag y green flag",
@@ -19,6 +21,7 @@ northern_bars = [
     "Barroco el bar de Uadibloc",
     "Aleatorio Bar",
 ]
+
 southern_bars = [
     "SAMBHAD the cocktail bar",
     "Bar Menuda History",
@@ -99,6 +102,9 @@ hard_search = [
     "Chuky",
     "Freddy Krueger",
 ]
+
+
+## DO NOT EDIT
 
 with open("output.txt", "w", encoding="utf-8") as f:
     for team in range(5):
